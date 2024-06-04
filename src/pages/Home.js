@@ -40,7 +40,7 @@ const Home = () => {
                 <img
                     className="homePageLogo"
                     src="/codeMine.png"
-                    alt="code-sync-logo"
+                    alt="codeMineLogologo"
                 />
                 <h4 className="mainLabel">Paste invitation ROOM ID</h4>
                 <div className="inputGroup">
