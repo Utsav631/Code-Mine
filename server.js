@@ -7,8 +7,8 @@ const { Server } = require('socket.io');
 const ACTIONS = require('./src/Actions');
 
 const corsOptions = {
-    origin: 'https://code-mine-w5js.onrender.com', // Replace with your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    origin: '*', // Allow all origins for testing purposes, but replace with your frontend URL for production
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204
 };
@@ -18,9 +18,8 @@ app.use(cors(corsOptions));
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: 'https://code-mine-w5js.onrender.com', // Replace with your frontend URL
-        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-        credentials: true
+        origin: '*', // Allow all origins for testing purposes, but replace with your frontend URL for production
+        methods: ["GET", "POST"]
     }
 });
 
