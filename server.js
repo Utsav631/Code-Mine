@@ -1,12 +1,28 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const http = require('http');
 const path = require('path');
 const { Server } = require('socket.io');
 const ACTIONS = require('./src/Actions');
 
+const corsOptions = {
+    origin: 'https://your-frontend-url.com', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    credentials: true,
+    optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
+
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origin: 'https://your-frontend-url.com', // Replace with your frontend URL
+        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+        credentials: true
+    }
+});
 
 app.use(express.static('build'));
 app.use((req, res, next) => {
@@ -15,7 +31,6 @@ app.use((req, res, next) => {
 
 const userSocketMap = {};
 function getAllConnectedClients(roomId) {
-    // Map
     return Array.from(io.sockets.adapter.rooms.get(roomId) || []).map(
         (socketId) => {
             return {
