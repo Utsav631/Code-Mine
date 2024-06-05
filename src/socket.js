@@ -7,5 +7,5 @@ export const initSocket = async () => {
         timeout: 10000,
         transports: ['websocket'],
     };
-    return io('https://code-mine-9qfu.vercel.app', options);
+    return io(process.env.REACT_APP_BACKEND_URL, options);
 };
