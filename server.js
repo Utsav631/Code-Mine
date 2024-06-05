@@ -7,7 +7,7 @@ const { Server } = require('socket.io');
 const ACTIONS = require('./src/Actions');
 
 const corsOptions = {
-    origin: '*', // Allow all origins for testing purposes, but replace with your frontend URL for production
+    origin: 'https://code-mine-9qfu.vercel.app', // Allow all origins for testing purposes, but replace with your frontend URL for production
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204
@@ -18,7 +18,7 @@ app.use(cors(corsOptions));
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: '*', // Allow all origins for testing purposes, but replace with your frontend URL for production
+        origin: 'https://code-mine-9qfu.vercel.app', // Allow all origins for testing purposes, but replace with your frontend URL for production
         methods: ["GET", "POST"]
     }
 });
